@@ -20,6 +20,8 @@ from django.urls import path
 from django.urls.conf import include
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
 
+from alocai_test import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
@@ -28,5 +30,8 @@ urlpatterns = [
     path('docs', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
     path('docs/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
 
+    path('api/v1/status', views.health_check, name='server_health_check'),
+
     path('api/v1/', include('games.urls')),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
