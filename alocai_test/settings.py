@@ -14,13 +14,13 @@ from datetime import timedelta
 from pathlib import Path
 import os
 import environ
-root = environ.Path(__file__) - 3  # get root of the project
-env = environ.Env()
-environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+root = environ.Path(BASE_DIR)  # get root of the project
+env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -159,7 +159,7 @@ USE_TZ = env.bool('ALOCAI_USE_TZ', default=True)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = env.str('ALOCAI_STATIC_URL')
-STATIC_ROOT = os.path.join(str(root), env.str('ALOCAI_STATIC_ROOT'))
+STATIC_ROOT = os.path.join(str(BASE_DIR), env.str('ALOCAI_STATIC_ROOT'))
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

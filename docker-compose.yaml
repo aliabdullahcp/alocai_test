@@ -1,0 +1,64 @@
+version: '3.2'
+
+services:
+  alocai-web:
+    container_name: "${PROJECT_NAME}_backend_${ENV}"
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: bash -c '
+      python manage.py migrate
+      && gunicorn alocai_test.wsgi:application --workers 4 --bind 0.0.0.0:$WEB_PORT
+      '
+    volumes:
+      - ".:/code"
+    ports:
+      - $WEB_PORT:8000
+    depends_on:
+      - alocai-db
+
+  alocai-db:
+    container_name: "${PROJECT_NAME}_postgres_${ENV}"
+    image: postgres:12.0-alpine
+    volumes:
+      - alocai-postgres_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_USER: "alocai"
+      POSTGRES_PASSWORD: "alocai"
+      POSTGRES_DB: "alocai"
+    expose:
+      - $DB_PORT
+    ports:
+      - $DB_PORT:$DB_PORT
+    command:
+      - "postgres"
+      - "-c"
+      - "port=${DB_PORT}"
+      - "-c"
+      - "max_connections=200"
+      - "-c"
+      - "shared_buffers=0.25GB"
+      - "-c"
+      - "effective_cache_size=12GB"
+      - "-c"
+      - "maintenance_work_mem=1GB"
+      - "-c"
+      - "checkpoint_completion_target=0.7"
+      - "-c"
+      - "wal_buffers=16MB"
+      - "-c"
+      - "default_statistics_target=100"
+      - "-c"
+      - "random_page_cost=1.1"
+      - "-c"
+      - "effective_io_concurrency=200"
+      - "-c"
+      - "work_mem=10485kB"
+      - "-c"
+      - "max_wal_size=4GB"
+      - "-c"
+      - "min_wal_size=0.1GB"
+
+volumes:
+  alocai-postgres_data:
+
