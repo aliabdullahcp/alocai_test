@@ -16,3 +16,7 @@ class SuccessResponseSerializer(serializers.Serializer):
 
     class Meta:
         fields = '__all__'
+
+
+class ServerStatusSerializer(serializers.Serializer):
+    database = serializers.CharField()

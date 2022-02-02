@@ -130,16 +130,8 @@ SPECTACULAR_SETTINGS = {
     Example Error Responses:-
       Example 1:
         {
-          "success" : 4000,
-          "message" : "
-        }
-      Example 2:
-        {
-          "success" : 4000,
-          "errors"  : {
             "ser-attribute"   : [ "Error 1", "Error 2" ], 
             "ser-attribute2"  : [ "Error 1" ]
-          }
         }
   """,
     'VERSION': '1.0.0',
