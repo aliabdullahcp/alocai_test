@@ -27,13 +27,13 @@ services:
       POSTGRES_PASSWORD: "alocai"
       POSTGRES_DB: "alocai"
     expose:
-      - $DB_PORT
+      - $ALOCAI_DEFAULT_DATABASE_PORT
     ports:
-      - $DB_PORT:$DB_PORT
+      - $ALOCAI_DEFAULT_DATABASE_PORT:$ALOCAI_DEFAULT_DATABASE_PORT
     command:
       - "postgres"
       - "-c"
-      - "port=${DB_PORT}"
+      - "port=${ALOCAI_DEFAULT_DATABASE_PORT}"
       - "-c"
       - "max_connections=200"
       - "-c"
