@@ -12,7 +12,7 @@ profitable as possible.
 You wanna create a service which will return a combination of games with the highest possible
 total value for the given pen-drive space and steal returned games from the computer.
 
-There are 3 endpoints created for this task:
+There are 4 endpoints created for this task:
 
 /docs
 - Documentation for the endpoints using OPEN API (redoc)
