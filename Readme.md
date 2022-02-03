@@ -12,21 +12,24 @@ profitable as possible.
 You wanna create a service which will return a combination of games with the highest possible
 total value for the given pen-drive space and steal returned games from the computer.
 
-There are 4 endpoints created for this task:
+There are 5 endpoints created for this task:
 
-/docs
+[GET] /docs
 - Documentation for the endpoints using OPEN API (redoc)
 
-/docs/swagger-ui
+[GET] /docs/swagger-ui
 - Documentation for the endpoints using OPEN API (swagger)
 
-/api/v1/games
+[GET, HEAD] /api/v1/status
+- Returns server health status about the database connection
+
+[POST] /api/v1/games
 - Endpoint to add new games
 
-/api/v1/best_value_games
+[POST] /api/v1/best_value_games
 - Endpoint to get the best games within a max space
 
-## Pre req
+## Prerequisite before setting up the project
 - docker should be installed
 
 ## Setting up the project:
