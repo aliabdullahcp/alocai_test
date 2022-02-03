@@ -4,7 +4,8 @@ from games.models import Game
 
 
 class GameTestCase(TestCase):
-    def setUp(self):
+    @classmethod
+    def setUpTestData(cls):
         Game.objects.create(name='Super Game', price=71.7, space=1073741824)
         Game.objects.create(name='Extra Game', price=100.78, space=2147483648)
         Game.objects.create(name='Avengers', price=90.2, space=3521483648)
