@@ -23,9 +23,9 @@ services:
     volumes:
       - alocai-postgres_data:/var/lib/postgresql/data/
     environment:
-      POSTGRES_USER: "alocai"
-      POSTGRES_PASSWORD: "alocai"
-      POSTGRES_DB: "alocai"
+      POSTGRES_USER: $ALOCAI_DEFAULT_DATABASE_USER
+      POSTGRES_PASSWORD: $ALOCAI_DEFAULT_DATABASE_PASSWORD
+      POSTGRES_DB: $ALOCAI_DEFAULT_DATABASE_NAME
     expose:
       - $ALOCAI_DEFAULT_DATABASE_PORT
     ports:
