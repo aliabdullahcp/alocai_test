@@ -40,8 +40,8 @@ There are 5 endpoints created for this task:
 
 ## Running test cases
 - Once the project is running inside the docker follow the steps below
-- **docker exec -it {PROJECT_NAME}_backend_{ENV} python /code/manage.py test**
-- in above command the values should be replaced with values from .env file if we consider the example.env then the above command should be **docker exec -it alocai_backend_dev python /code/manage.py test**
+- **docker exec -it {PROJECT_NAME}_backend_{ENV} pytest**
+- in above command the values should be replaced with values from .env file if we consider the example.env then the above command should be **docker exec -it alocai_backend_dev pytest**
 
 ## Requirements
 1. Create a Python (>= 3.8) web application using web framework you find appropriate (we use Flask)
