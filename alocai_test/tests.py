@@ -22,6 +22,5 @@ class StatusEndpointTestCase(TestCase):
 
         # verifying success response for head request method
         health_response = test_client.head(test_url)
-        print(health_response)
         self.assertEqual(health_response.status_code, 200)
         self.assertEqual(health_response.content, b'')
